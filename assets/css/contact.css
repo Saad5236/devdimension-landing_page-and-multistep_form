@@ -1,0 +1,230 @@
+/* ________MAIN CONTENT________ */
+
+main {
+  background: url("../images/round-bg.png") right top no-repeat,
+    url("../images/left-bg.png") left center no-repeat;
+  background-size: 70px;
+  margin-bottom: 85px;
+}
+
+.contact {
+  max-width: 1100px;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.contact-steps-thread {
+  position: absolute;
+  top: 13px;
+  left: 50.5%;
+  transform: translateX(-49.5%);
+  width: 93%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 5;
+}
+
+.contact-step > div {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.contact-step > p {
+  font-size: 12px;
+}
+
+.contact-step.active-contact-step > div {
+  background-color: red;
+  color: white;
+}
+
+.contact-step.active-contact-step > p {
+  font-weight: bold;
+}
+
+/* CONTACT FORM */
+.contact-form .contact-form-tab-header {
+  color: var(--my-blue);
+}
+
+.contact-form {
+  font-size: 15px;
+}
+
+.contact-form .contact-form-input input {
+  border-bottom: 1px solid #ced4da !important;
+}
+
+.contact-form-input input::placeholder {
+  font-size: 15px;
+}
+
+.contact-form-nav button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.contact-form-nav .contact-form-prev-btn {
+  border: 1px solid;
+}
+
+.contact-form-nav :is(.contact-form-next-btn, .contact-form-submit-btn) {
+  background-color: red;
+  color: white;
+}
+
+.contact-nav-btn-img {
+  width: 30px;
+}
+
+/* tab 2 */
+
+.contact-service-input {
+  border: 1px solid #00000012;
+  min-height: 160px;
+  margin-inline: 7px;
+  border-radius: 5px;
+}
+
+.contact-service-inputs .contact-service-input:hover {
+  border: 1px solid red;
+}
+
+.contact-service-input input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.contact-service-input label {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-service-input label div {
+  max-width: 30%;
+}
+
+.drop-images-panel {
+  border: 2px dashed #00000021;
+}
+
+.drop-images-drag i {
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.drop-images-panel-inner {
+  position: relative;
+}
+
+.drop-images-panel-inner > div:nth-child(2) {
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  font-size: 13px;
+  border: 1px solid;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* @media (width < 768px) {
+  .drop-images-panel-inner > div:nth-child(2) {
+    display: none;
+  }
+} */
+
+.om-sliderrange-range-indicator {
+  background-color: #fee2e1;
+  height: 10px;
+}
+
+.om-sliderrange-range:before {
+  background-color: white;
+  border: 1px solid rgba(24, 49, 58, 0.11);
+  height: 10px;
+}
+
+.om-sliderrange-button-start,
+.om-sliderrange-button-end {
+  background-color: var(--my-red);
+  width: 20px;
+  height: 20px;
+}
+
+.om-sliderrange-display {
+  margin: 0;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.om-sliderrange-display span {
+  font-size: 14px;
+  color: black;
+}
+
+.om-sliderrange-display span:nth-child(2) {
+  display: none;
+}
+
+.unknown-budget-btn {
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/* MULTI PAGE FORM HANDLINK */
+
+.contact-form-tab {
+  display: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.active-tick {
+  display: none;
+  background-color: var(--my-red);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  color: white;
+
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.active-tick > div {
+  width: 100%;
+  height: 100%;
+}
+
+.active-tick.active-tick-visible {
+  display: block;
+}
+
+.contact-service-input.contact-service-input-active {
+  border: 1px solid red;
+}
+
+.contact-service-input label .contact-service-active-image {
+  display: none;
+}

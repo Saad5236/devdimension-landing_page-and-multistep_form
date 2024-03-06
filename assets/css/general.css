@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  list-style: none;
+  transition: 0.3s;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button:active {
+  outline: none;
+  border: none;
+}
+
+body > * {
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --my-red: #fc3f37;
+  --my-orange: #f77e53;
+  --my-blue: #18313a;
+  --my-bright-blue: #183b3a;
+  --my-black: #212529;
+  --my-dull-white: #f8f9fb;
+  --my-light-grey: rgba(24, 49, 58, 0.2);
+}
+
+.highlight-btn {
+  color: white;
+  background-color: var(--my-red);
+  padding: 15px 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.highlight-btn i {
+  margin-left: 8px;
+}
+
+/* NAVBAR */
+
+.navbar-wrapper {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-box-shadow {
+  box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
+}
+
+nav,
+.hero-section.row,
+.business-numbers.row,
+.our-services-inner,
+.featured-works,
+.our-clients,
+footer .contact-details,
+.footer-bottom,
+.hear-from-inner {
+  max-width: 1200px;
+  width: 95%;
+  margin-inline: auto;
+}
+
+.navbar-brand {
+  width: 136px;
+}
+
+.nav-items .nav-link {
+  color: #212121;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-items .nav-link:hover {
+  color: red;
+  border-bottom: 2px solid red;
+}
+
+#nav-item-active {
+  color: var(--my-red);
+}
+
+.navbar-contact-link {
+  width: 59px;
+}
+
+@media (max-width <= 995px) {
+  .navbar-contact-link {
+    display: none;
+  }
+}
+
+
+
+/* READY TO INNOVATE */
+
+.ready-to-innovate {
+  background-color: #f8f9fb;
+}
+
+.ready-to-innovate-inner {
+  max-width: 1000px;
+  width: 80%;
+}
+
+.ready-to-innovate-inner h3 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+  font-size: 15px;
+}
+
+.contact-detail-panel .contact-address span {
+  color: var(--my-red);
+  font-weight: bold;
+}
+
+.social-media-links {
+  font-size: 16px;
+}
+
+.social-media-links a {
+  background-color: red;
+  color: white;
+}
