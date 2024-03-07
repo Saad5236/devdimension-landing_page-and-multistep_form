@@ -130,78 +130,91 @@ function validateContactForm() {
   return valid
 }
 
-// let contactForm = document.querySelector(".contact-form")
-// contactForm.addEventListener("submit", (e) => {
-//   if (!validateContactForm()) {
-//     e.preventDefault()
-//     return
-//   }
+// DRAG DROP AND BROWSE IMAGES HANDLING
 
-//   const contacFormtDataObj = new FormData(contactForm)
-//   let contactFormData = {}
-//   contacFormtDataObj.forEach((value, key) => {
-//     contactFormData[key] = value
-//   })
-
-//   contactFormData.percent_range_start = contacFormtDataObj
-//     .get("percent_range")
-//     .split(",")[0]
-//   contactFormData.percent_range_end = contacFormtDataObj
-//     .get("percent_range")
-//     .split(",")[1]
-//   const checkedCheckBoxes = document.querySelectorAll(
-//     ".contact-service-input input[type=checkbox]:checked"
-//   )
-//   contactFormData.services = Array.from(checkedCheckBoxes).map(
-//     (checkbox) => checkbox.value
-//   )
-
-//   let contactFormsData =
-//     JSON.parse(localStorage.getItem("contactFormsData")) || []
-//   contactFormsData.push(contactFormData)
-//   localStorage.setItem("contactFormsData", JSON.stringify(contactFormsData))
-//   console.log(contactFormsData)
-
-//   window.location.href = "/Practice/devdimensions_website/contactData.html"
-//   e.preventDefault()
-// })
-
+let dragDropZone = document.querySelector(".drop-images-drag")
+let fileInput = document.querySelector("#project-file-input")
+let imgCanvas = document.querySelector(".img-canvas")
 let contactForm = document.querySelector(".contact-form")
+let imgSrcs = []
+
+let events = ["dragenter", "dragover", "dragleave", "drop"]
+events.forEach((eventName) => {
+  dragDropZone.addEventListener(eventName, preventDefaults, false)
+})
+
+function preventDefaults(event) {
+  event.preventDefault()
+  event.stopPropagation()
+}
+
+// Drag and drop
+
+dragDropZone.addEventListener("drop", handleDrop, false)
+
+function handleDrop(event) {
+  const dt = event.dataTransfer
+  const files = dt.files
+
+  handleFiles(files)
+  console.log("working...1")
+}
+
+function handleFiles(files) {
+  ;[...files].forEach(uploadFile)
+  console.log("working...2")
+}
+
+function uploadFile(file) {
+  const reader = new FileReader()
+
+  reader.onload = function (event) {
+    imgSrcs.push(event.target.result)
+
+    dragDropZone.querySelector(
+      ".dropped-images"
+    ).innerHTML += `<div class="dropped-img"><img src="${event.target.result}" /><span>X</span></div>`
+
+    document.querySelectorAll(".dropped-img span").forEach((delBtn, index) => {
+      delBtn.addEventListener("click", (e) => {
+        imgSrcs.splice(index, 1)
+        delBtn.parentNode.remove()
+      })
+    })
+  }
+
+  reader.readAsDataURL(file)
+  console.log("working...3")
+}
+
+// Browse file
+
+fileInput.addEventListener("change", handleFileInput, false)
+
+function handleFileInput(event) {
+  const files = event.target.files
+  handleFiles(files)
+}
+
 contactForm.addEventListener("submit", (e) => {
   if (!validateContactForm()) {
     e.preventDefault()
     return
   }
 
-  const contacFormtDataObj = new FormData(contactForm)
+  const contacFormDataObj = new FormData(contactForm)
   let contactFormData = {}
 
   // Iterate over form data
-  contacFormtDataObj.forEach((value, key) => {
-    // If the value is a File object (uploaded image), convert it to a data URL
-    if (value instanceof File) {
-      const reader = new FileReader()
-      reader.onload = function (event) {
-        // Store the data URL in the form data object
-        contactFormData[key] = event.target.result
 
-        // Proceed with other form data processing
-        processData()
-      }
-      reader.readAsDataURL(value) // Read the file as data URL
-    } else {
-      // For non-file fields, simply store the value in the form data object
-      contactFormData[key] = value
-    }
+  contacFormDataObj.forEach((value, key) => {
+    contactFormData[key] = value
   })
 
-  // Function to process other form data
-  function processData() {
-    // Split the percent range if needed
-    contactFormData.percent_range_start = contacFormtDataObj
+  contactFormData.percent_range_start = contacFormDataObj
       .get("percent_range")
       .split(",")[0]
-    contactFormData.percent_range_end = contacFormtDataObj
+    contactFormData.percent_range_end = contacFormDataObj
       .get("percent_range")
       .split(",")[1]
 
@@ -214,6 +227,8 @@ contactForm.addEventListener("submit", (e) => {
       (checkbox) => checkbox.value
     )
 
+    contactFormData.project_file_imgs = imgSrcs
+
     // Get existing contact forms data from localStorage
     let contactFormsData =
       JSON.parse(localStorage.getItem("contactFormsData")) || []
@@ -222,8 +237,7 @@ contactForm.addEventListener("submit", (e) => {
     // Save the updated data back to localStorage
     localStorage.setItem("contactFormsData", JSON.stringify(contactFormsData))
 
-    // Redirect to the next page
+        // Redirect to the next page
     window.location.href = "/Practice/devdimensions_website/contactData.html"
     e.preventDefault()
-  }
 })

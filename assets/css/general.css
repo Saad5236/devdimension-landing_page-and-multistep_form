@@ -96,6 +96,10 @@ footer .contact-details,
   border-bottom: 2px solid red;
 }
 
+.navbar-contact-link :is(.nav-link, .nav-link:hover) {
+  border-bottom: none;
+}
+
 #nav-item-active {
   color: var(--my-red);
 }
@@ -109,8 +113,6 @@ footer .contact-details,
     display: none;
   }
 }
-
-
 
 /* READY TO INNOVATE */
 
